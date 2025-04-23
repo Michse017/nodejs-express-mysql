@@ -1,0 +1,28 @@
+- name: Instalar y configurar MySQL en Ubuntu
+  hosts: all
+  become: yes
+  tasks:
+    - name: Instalar MySQL Server
+      apt:
+        name: mysql-server
+        state: present
+        update_cache: yes
+
+    - name: Asegurar que MySQL esté corriendo
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+
+    - name: Crear base de datos
+      mysql_db:
+        name: appdb
+        state: present
+
+    - name: Crear usuario de MySQL
+      mysql_user:
+        name: appuser
+        password: "app_password"
+        priv: 'appdb.*:ALL'
+        host: '%'
+        state: present
