@@ -2,6 +2,12 @@
   hosts: all
   become: yes
   tasks:
+    - name: Instalar dependencias de Python para MySQL
+      apt:
+        name: python3-pymysql
+        state: present
+        update_cache: yes
+
     - name: Instalar MySQL Server
       apt:
         name: mysql-server
@@ -18,6 +24,7 @@
       mysql_db:
         name: appdb
         state: present
+        login_unix_socket: /var/run/mysqld/mysqld.sock
 
     - name: Crear usuario de MySQL
       mysql_user:
@@ -26,3 +33,4 @@
         priv: 'appdb.*:ALL'
         host: '%'
         state: present
+        login_unix_socket: /var/run/mysqld/mysqld.sock

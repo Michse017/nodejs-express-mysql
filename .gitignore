@@ -1,2 +1,12 @@
 node_modules
 package-lock.json
+# Terraform state files
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# SSH private keys
+ssh_key.pem
+
+# Backup files
+*.backup
