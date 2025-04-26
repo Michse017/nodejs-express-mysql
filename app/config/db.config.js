@@ -1,15 +1,6 @@
-const mysql = require('mysql');
-
-const connection = mysql.createConnection({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE
-});
-
 module.exports = {
-  HOST: "localhost",
-  USER: "root",
-  PASSWORD: "123456",
-  DB: "testdb"
+  HOST: process.env.MYSQL_HOST,
+  USER: process.env.MYSQL_USER,
+  PASSWORD: process.env.MYSQL_PASSWORD,
+  DB: process.env.MYSQL_DATABASE
 };
