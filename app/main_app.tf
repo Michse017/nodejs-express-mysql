@@ -1,13 +1,18 @@
+provider "azurerm" {
+  features {}
+  subscription_id = "bf177a1c-c4b4-4da4-b0c3-11cf21bcdc6e" # Reemplaza por tu ID si es diferente
+}
+
 resource "azurerm_resource_group" "app" {
   name     = "rg-nodejs-app"
-  location = "East US"
+  location = "West Europe"
 }
 
 resource "azurerm_service_plan" "appserviceplan" {
   name                = "asp-nodejs"
   location            = azurerm_resource_group.app.location
   resource_group_name = azurerm_resource_group.app.name
-  sku_name            = "F1"
+  sku_name            = "B1"
   os_type             = "Linux"
 }
 
