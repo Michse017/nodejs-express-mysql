@@ -125,6 +125,18 @@ resource "azurerm_network_security_group" "mysql_nsg" {
   }
 
   security_rule {
+    name                       = "Allow-MySQL-All"
+    priority                   = 120
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_address_prefix      = "*"
+    destination_port_range     = "3306"
+    source_port_range          = "*"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
     name                       = "Deny-All-Inbound"
     priority                   = 200
     direction                  = "Inbound"
