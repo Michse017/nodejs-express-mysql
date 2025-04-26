@@ -29,7 +29,7 @@ resource "azurerm_linux_web_app" "appservice" {
   }
 
   app_settings = {
-    "MYSQL_HOST"     = "172.173.152.88"
+    "MYSQL_HOST"     = "172.178.22.51" 
     "MYSQL_USER"     = "appuser"
     "MYSQL_PASSWORD" = "app_password"
     "MYSQL_DATABASE" = "appdb"
